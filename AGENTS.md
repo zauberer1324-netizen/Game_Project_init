@@ -97,3 +97,4 @@ Before promoting workstream proposals into central memory or `game_project/`, ru
 - After selecting an engine, use `scripts/scaffold_engine_profile.py` to copy the selected test gate into `game_project/test_config/`.
 - Use `docs/rubrics/` to review workstream outputs without flattening creative choices.
 - Use `docs/reports/merge_preview_template.md` before central integration.
+- Use `workspace-continuity` before closing important chats, renaming or moving the folder, switching machines, or resuming from a new chat.

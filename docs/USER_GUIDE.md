@@ -507,6 +507,90 @@ docs/orchestrator/pending_memory_update.md
 주의할 점:
 
 `pending_memory_update.md`는 자동 결정이 아니다. 오케스트레이터가 검토하고 사용자 확인 후 `ORCHESTRATOR_MEMORY.md`에 반영해야 한다.
+### 10-1. 폴더명 변경과 새 채팅 복구
+
+폴더명을 바꾸거나, 새 컴퓨터에서 clone하거나, Codex에서 새 채팅을 열면 이전 채팅의 감각을 그대로 믿으면 안 된다. 이 작업공간은 채팅 기억이 아니라 파일을 기준으로 상태를 복구하도록 설계되어 있다.
+
+관련 스킬과 상세 가이드는 다음 위치에 있다.
+
+```text
+orchestrator_project/skills/workspace-continuity/SKILL.md
+docs/guides/workspace_continuity.md
+```
+
+사용해야 하는 상황:
+
+- 오늘 작업을 종료하기 전
+- 폴더명을 바꾸기 전
+- 폴더를 다른 위치로 옮기기 전
+- GitHub Desktop에서 local path를 다시 잡아야 할 때
+- 노트북과 데스크탑을 오가며 작업할 때
+- 새 Codex 채팅에서 오케스트레이터를 다시 시작할 때
+- 워크스트림 채팅을 닫거나 새로 열 때
+
+오케스트레이터 종료 프롬프트:
+
+```text
+workspace-continuity 스킬로 오케스트레이터 종료 절차를 수행해줘.
+현재 작업 루트, git 상태, remote, branch를 확인하고,
+CONTEXT.md, docs/contracts, docs/prd, docs/adr, docs/reports,
+docs/orchestrator/ORCHESTRATOR_MEMORY.md가 최신인지 검토해줘.
+필요한 메모리 갱신안을 제안하고, 품질 게이트와 commit/push 준비 상태를 알려줘.
+```
+
+워크스트림 종료 프롬프트:
+
+```text
+workspace-continuity 스킬로 워크스트림 종료 절차를 수행해줘.
+담당 워크스트림은 workstreams/<name> 이야.
+중앙 파일은 수정하지 말고, OUTPUT.md, HANDOFF.md,
+proposed_context_updates.md, proposed_adr.md를 다음 채팅과 오케스트레이터가
+이어받을 수 있게 정리해줘.
+```
+
+오케스트레이터 새 채팅 시작 프롬프트:
+
+```text
+이 폴더를 현재 작업 루트로 사용해.
+이전 채팅 기억에 의존하지 말고 파일 기준으로 상태를 복구해줘.
+AGENTS.md, orchestrator_project/AGENTS.md, orchestrator.config.json,
+CONTEXT.md, docs/orchestrator/ORCHESTRATOR_MEMORY.md,
+docs/orchestrator/MEMORY_PROTOCOL.md, docs/maps/workstream_dependency_map.md를 읽고
+workspace-continuity 오케스트레이터 재개 절차를 수행해줘.
+```
+
+워크스트림 새 채팅 시작 프롬프트:
+
+```text
+이 채팅은 workstreams/<name> 담당 워크스트림이야.
+이전 채팅 기억에 의존하지 말고 START_PROMPT.md, BRIEF.md, HANDOFF.md,
+OUTPUT.md와 관련 계약 문서를 읽고 현재 상태를 복구해줘.
+workspace-continuity 워크스트림 재개 절차를 수행하고 다음 작업을 제안해줘.
+```
+
+폴더명 변경 시 추천 절차:
+
+```text
+1. 오케스트레이터 종료 프롬프트를 실행한다.
+2. 품질 게이트를 실행한다.
+3. commit/push로 현재 상태를 저장한다.
+4. Codex, GitHub Desktop, VS Code를 닫는다.
+5. Windows 탐색기에서 폴더명을 바꾼다.
+6. GitHub Desktop에서 File > Add local repository...로 새 폴더를 다시 추가한다.
+7. Codex에서 새 폴더를 작업공간으로 연다.
+8. 오케스트레이터 새 채팅 시작 프롬프트로 상태를 복구한다.
+```
+
+실제 게임명이 정해져 내부 프로젝트명도 바꿀 때는 다음을 실행한다.
+
+```powershell
+$env:PYTHON_BIN = "C:\Users\이중원\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
+& $env:PYTHON_BIN .\scripts\initialize_from_template.py --project-name "Actual_Game_Name" --reset-memory --clear-runtime --apply
+& $env:PYTHON_BIN .\scripts\generate_workstream_prompts.py --write
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_quality_gate.ps1
+```
+
+중요한 점은 `.git`이 들어 있는 루트 폴더를 Codex 작업공간으로 열어야 한다는 것이다. `game_project/`나 `orchestrator_project/`만 따로 열면 오케스트레이터 구조가 제대로 적용되지 않는다.
 
 ---
 

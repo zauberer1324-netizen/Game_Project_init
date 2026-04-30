@@ -57,11 +57,14 @@ def main() -> int:
 
     init_skills = select_skills("orchestrator_init", "init", "medium")
     review_skills = select_skills("workstream_review", "review", "medium")
+    continuity_skills = select_skills("workspace_continuity", "resume", "medium")
     if "orchestrator-init" not in init_skills:
         errors.append("orchestrator_init does not select orchestrator-init")
     if "workstream-review" not in review_skills:
         errors.append("workstream_review does not select workstream-review")
-    if "strict-review" not in init_skills or "strict-review" not in review_skills:
+    if "workspace-continuity" not in continuity_skills:
+        errors.append("workspace_continuity does not select workspace-continuity")
+    if "strict-review" not in init_skills or "strict-review" not in review_skills or "strict-review" not in continuity_skills:
         errors.append("medium-risk orchestration routes should select strict-review")
 
     if errors:

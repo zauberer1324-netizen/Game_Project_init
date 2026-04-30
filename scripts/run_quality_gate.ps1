@@ -50,11 +50,19 @@ Invoke-Step $pythonPath .\scripts\check_path_policy.py --check-workstream-output
 Invoke-Step $pythonPath .\scripts\check_workstream_dependencies.py
 Invoke-Step $pythonPath .\scripts\check_start_prompts.py
 Invoke-Step $pythonPath .\scripts\check_engine_profiles.py
-Invoke-StepQuiet $pythonPath .\scripts\initialize_from_template.py --project-name "Project_game"
+$projectName = "Project_game"
+if (Test-Path .\orchestrator.config.json) {
+  $projectConfig = Get-Content -Path .\orchestrator.config.json -Raw | ConvertFrom-Json
+  if ($projectConfig.project_name) {
+    $projectName = $projectConfig.project_name
+  }
+}
+Invoke-StepQuiet $pythonPath .\scripts\initialize_from_template.py --project-name $projectName
 Invoke-StepQuiet $pythonPath .\scripts\draft_memory_update.py
 Invoke-StepQuiet $pythonPath .\scripts\build_merge_preview.py physics_engine
 Invoke-StepQuiet $pythonPath .\scripts\run_project_orchestrator.py --request "Initialize game direction" --intent orchestrator_init --task-type init --risk medium --dry-run
 Invoke-StepQuiet $pythonPath .\scripts\run_project_orchestrator.py --request "Review a workstream handoff" --intent workstream_review --task-type review --risk medium --dry-run
+Invoke-StepQuiet $pythonPath .\scripts\run_project_orchestrator.py --request "Recover workspace state" --intent workspace_continuity --task-type resume --risk medium --dry-run
 
 $insideGit = $false
 try {

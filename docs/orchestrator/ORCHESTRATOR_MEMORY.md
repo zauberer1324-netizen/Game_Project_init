@@ -52,11 +52,10 @@ None. Run `orchestrator-init` first so all workstreams share the same direction.
 
 ## Last Orchestration Action
 
-Removed final duplicated maintenance points by adding `docs/maps/workstream_dependencies.json`
-as the single source for workstream contract dependencies, making
-`orchestrator.config.json` the source for context routes, syncing
-`context_index.json` as a mirror, and extending quality checks. Report:
-`docs/reports/single-source-cleanup-report.md`.
+Added the `workspace-continuity` skill and workflow so Orchestrator and
+workstream chats can preserve state before closing, recover from files in new
+chats, and survive folder renames, moves, clones, and machine switches. Report:
+`docs/reports/workspace-continuity-implementation-report.md`.
 
 ## Next Recommended Orchestration Action
 

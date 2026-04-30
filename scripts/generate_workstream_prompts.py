@@ -1,12 +1,25 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 from workstream_dependency_lib import PROJECT_ROOT, dependency_for, workstream_folders
 
 
-COMMON_HEADER = """You are a specialist AI working inside the Project_game workspace.
+PROJECT_CONFIG_PATH = PROJECT_ROOT / "orchestrator.config.json"
+
+
+def _project_name() -> str:
+    if not PROJECT_CONFIG_PATH.exists():
+        return "Project_game"
+    config = json.loads(PROJECT_CONFIG_PATH.read_text(encoding="utf-8"))
+    return config.get("project_name", "Project_game")
+
+
+def _common_header() -> str:
+    project_name = _project_name()
+    return f"""You are a specialist AI working inside the {project_name} workspace.
 
 Your output is a proposal until the Orchestrator reviews and accepts it.
 """
@@ -30,7 +43,7 @@ def _prompt_for(workstream_id: str, folder: Path) -> str:
 
     return f"""# {workstream_id} Start Prompt
 
-{COMMON_HEADER}
+{_common_header()}
 
 ## Role
 

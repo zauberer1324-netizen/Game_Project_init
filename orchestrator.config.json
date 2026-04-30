@@ -35,6 +35,12 @@
     "default": [
       "CONTEXT.md#Language",
       "AGENTS.md"
+    ],
+    "workspace_continuity": [
+      "AGENTS.md",
+      "CONTEXT.md#Language",
+      "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
+      "docs/orchestrator/MEMORY_PROTOCOL.md"
     ]
   },
   "workflow_routes": {
@@ -44,7 +50,8 @@
     "feature": "workflows/evidence_report.md",
     "architecture": "skills/improve-codebase-architecture/SKILL.md",
     "orchestrator_init": "workflows/orchestrator_init.md",
-    "workstream_review": "workflows/workstream_review.md"
+    "workstream_review": "workflows/workstream_review.md",
+    "workspace_continuity": "workflows/workspace_continuity.md"
   },
   "required_intents": [
     "orchestrator_init",
@@ -53,7 +60,8 @@
     "bug",
     "feature",
     "architecture",
-    "data_analysis"
+    "data_analysis",
+    "workspace_continuity"
   ],
   "quality_gate": {
     "require_schema_examples": true,

@@ -20,6 +20,7 @@ events happens:
 5. A workstream becomes ready, blocked, or completed.
 6. A major open question is answered or added.
 7. Approved changes are promoted into `game_project/`.
+8. A session is ending before a folder rename, folder move, machine switch, or new chat resume and important state changed.
 
 ## Required Sections
 

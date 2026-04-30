@@ -4,6 +4,9 @@ from __future__ import annotations
 def select_skills(intent: str, task_type: str, risk_level: str) -> list[str]:
     skills: list[str] = []
 
+    if intent in {"workspace_continuity", "continuity"} or task_type in {"workspace_continuity", "continuity", "resume", "close"}:
+        skills.append("workspace-continuity")
+
     if intent in {"orchestrator_init", "init"} or task_type in {"orchestrator_init", "init"}:
         skills.append("orchestrator-init")
 

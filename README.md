@@ -102,3 +102,13 @@ python .\scripts\scaffold_engine_profile.py phaser_typescript --write
 
 Use the selected profile's Game Test Gate as the project-specific game test
 layer in addition to the workspace quality gate.
+## Workspace Continuity
+
+Before renaming or moving the folder, switching machines, or starting a new chat,
+use the `workspace-continuity` skill and read:
+
+- `docs/guides/workspace_continuity.md`
+- `docs/orchestrator/ORCHESTRATOR_MEMORY.md`
+
+The goal is to recover state from files instead of relying on previous chat
+context.

@@ -33,6 +33,12 @@
     "default": [
       "CONTEXT.md#Language",
       "AGENTS.md"
+    ],
+    "workspace_continuity": [
+      "AGENTS.md",
+      "CONTEXT.md#Language",
+      "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
+      "docs/orchestrator/MEMORY_PROTOCOL.md"
     ]
   }
 }
