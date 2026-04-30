@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conflict.schema.json",
+  "type": "object",
+  "required": [
+    "conflict_id",
+    "topic",
+    "source_a",
+    "source_b",
+    "difference",
+    "preferred_value",
+    "reason",
+    "remaining_uncertainty"
+  ],
+  "properties": {
+    "conflict_id": { "type": "string" },
+    "topic": { "type": "string" },
+    "source_a": { "type": "string" },
+    "source_b": { "type": "string" },
+    "difference": { "type": "string" },
+    "preferred_value": { "type": "string" },
+    "reason": { "type": "string" },
+    "remaining_uncertainty": { "type": "string" }
+  },
+  "additionalProperties": false
+}
+

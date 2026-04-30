@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "final_report.schema.json",
+  "type": "object",
+  "required": [
+    "conclusion",
+    "facts",
+    "inferences",
+    "conflicts",
+    "limits",
+    "strict_review"
+  ],
+  "properties": {
+    "conclusion": { "type": "string" },
+    "facts": { "type": "array" },
+    "inferences": { "type": "array" },
+    "conflicts": { "type": "array" },
+    "limits": { "type": "array" },
+    "execution_method": { "type": "string" },
+    "strict_review": { "type": "object" }
+  },
+  "additionalProperties": false
+}
+

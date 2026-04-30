@@ -1,0 +1,64 @@
+{
+  "project_name": "Project_game",
+  "framework_root": "orchestrator_project",
+  "context_routes": {
+    "data_analysis": [
+      "CONTEXT.md#Accuracy Rules",
+      "CONTEXT.md#Language"
+    ],
+    "bug": [
+      "CONTEXT.md#Language",
+      "CONTEXT.md#Game Development Rules"
+    ],
+    "game_dev": [
+      "CONTEXT.md#Language",
+      "CONTEXT.md#Game Development Rules"
+    ],
+    "feature": [
+      "CONTEXT.md#Language",
+      "CONTEXT.md#Relationships"
+    ],
+    "architecture": [
+      "CONTEXT.md#Language",
+      "CONTEXT.md#Relationships"
+    ],
+    "orchestrator_init": [
+      "AGENTS.md",
+      "CONTEXT.md#Language",
+      "docs/orchestrator/ORCHESTRATOR_MEMORY.md"
+    ],
+    "workstream_review": [
+      "AGENTS.md",
+      "CONTEXT.md#Language",
+      "docs/orchestrator/ORCHESTRATOR_MEMORY.md"
+    ],
+    "default": [
+      "CONTEXT.md#Language",
+      "AGENTS.md"
+    ]
+  },
+  "workflow_routes": {
+    "data_analysis": "workflows/data_analysis.md",
+    "bug": "workflows/bug_diagnosis.md",
+    "game_dev": "workflows/game_development.md",
+    "feature": "workflows/evidence_report.md",
+    "architecture": "skills/improve-codebase-architecture/SKILL.md",
+    "orchestrator_init": "workflows/orchestrator_init.md",
+    "workstream_review": "workflows/workstream_review.md"
+  },
+  "required_intents": [
+    "orchestrator_init",
+    "workstream_review",
+    "game_dev",
+    "bug",
+    "feature",
+    "architecture",
+    "data_analysis"
+  ],
+  "quality_gate": {
+    "require_schema_examples": true,
+    "check_memory_freshness": true,
+    "check_router_sync": true,
+    "check_path_policy": true
+  }
+}

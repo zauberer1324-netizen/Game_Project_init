@@ -1,0 +1,24 @@
+#!/bin/sh
+set -eu
+
+export PYTHONDONTWRITEBYTECODE=1
+
+if [ -n "${PYTHON_BIN:-}" ]; then
+  PY="$PYTHON_BIN"
+elif command -v python >/dev/null 2>&1; then
+  PY="python"
+elif command -v py >/dev/null 2>&1; then
+  PY="py -3"
+else
+  echo "Python executable not found. Set PYTHON_BIN before committing." >&2
+  exit 1
+fi
+
+$PY scripts/check_path_policy.py --staged --role precommit
+$PY scripts/sync_context_index.py --check
+$PY scripts/check_router_sync.py
+$PY scripts/check_schema_examples.py
+$PY scripts/check_memory_freshness.py --warn-only
+$PY scripts/check_workstream_dependencies.py
+$PY scripts/check_start_prompts.py
+$PY scripts/check_engine_profiles.py

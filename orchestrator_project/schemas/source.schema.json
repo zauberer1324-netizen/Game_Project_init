@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "source.schema.json",
+  "type": "object",
+  "required": [
+    "source_id",
+    "source_type",
+    "title",
+    "retrieved_at",
+    "raw_path",
+    "access_status"
+  ],
+  "properties": {
+    "source_id": { "type": "string", "minLength": 1 },
+    "source_type": {
+      "type": "string",
+      "enum": ["web", "pdf", "api", "file", "code", "email", "database"]
+    },
+    "title": { "type": "string" },
+    "url": { "type": "string" },
+    "retrieved_at": { "type": "string", "format": "date-time" },
+    "raw_path": { "type": "string" },
+    "access_status": { "type": "string", "enum": ["success", "failed"] },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}
+

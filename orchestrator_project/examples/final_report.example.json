@@ -1,0 +1,22 @@
+{
+  "conclusion": "The example conclusion is supported by the verified facts.",
+  "facts": [
+    {
+      "claim": "Example fact",
+      "source_id": "src_001",
+      "location": "section: Example"
+    }
+  ],
+  "inferences": [
+    "Example inference clearly labeled as an inference."
+  ],
+  "conflicts": [],
+  "limits": [
+    "This is an example report and not a real-world finding."
+  ],
+  "execution_method": "Collector, extractor, verifier, and strict reviewer workflow.",
+  "strict_review": {
+    "pass": true,
+    "risk_level": "low"
+  }
+}

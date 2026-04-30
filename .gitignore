@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Node and web builds
+node_modules/
+dist/
+build/
+.next/
+.vite/
+
+# Game/editor generated folders
+.godot/
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+
+# Local runtime and generated artifacts
+.env
+.env.*
+!.env.example
+runs/*/
+data/raw/*
+data/extracted/*
+data/verified/*
+data/rejected/*
+
+# Keep placeholder files in otherwise empty tracked folders
+!runs/.gitkeep
+!data/raw/.gitkeep
+!data/extracted/.gitkeep
+!data/verified/.gitkeep
+!data/rejected/.gitkeep

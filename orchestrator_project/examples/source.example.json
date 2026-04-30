@@ -1,0 +1,10 @@
+{
+  "source_id": "src_001",
+  "source_type": "web",
+  "title": "Example official source",
+  "url": "https://example.com/source",
+  "retrieved_at": "2026-04-29T00:00:00Z",
+  "raw_path": "data/raw/src_001.html",
+  "access_status": "success",
+  "notes": "Example metadata only; raw content is stored separately."
+}

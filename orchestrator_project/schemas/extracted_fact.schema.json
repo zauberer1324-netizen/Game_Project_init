@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "extracted_fact.schema.json",
+  "type": "object",
+  "required": ["source_id", "facts"],
+  "properties": {
+    "source_id": { "type": "string" },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim",
+          "value",
+          "location",
+          "confidence",
+          "extraction_risk"
+        ],
+        "properties": {
+          "claim": { "type": "string" },
+          "value": { "type": "string" },
+          "location": { "type": "string" },
+          "quote_or_anchor": { "type": "string" },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "extraction_risk": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

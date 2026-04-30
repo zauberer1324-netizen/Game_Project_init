@@ -1,0 +1,21 @@
+{
+  "template_name": "Project_game AI Orchestration Workspace",
+  "template_version": "0.2.0",
+  "replaceable_project_name": "Project_game",
+  "preserve_paths": [
+    "orchestrator_project/",
+    "scripts/",
+    "engine_profiles/",
+    "docs/startup/",
+    "docs/rubrics/",
+    "docs/git/"
+  ],
+  "reset_on_new_game": [
+    "runs/",
+    "data/raw/",
+    "data/extracted/",
+    "data/verified/",
+    "data/rejected/"
+  ],
+  "first_action": "Run orchestrator-init before starting workstreams."
+}

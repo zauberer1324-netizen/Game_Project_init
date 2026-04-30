@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "strict_review.schema.json",
+  "type": "object",
+  "required": [
+    "pass",
+    "risk_level",
+    "issues",
+    "required_fixes",
+    "unsupported_claims",
+    "conflicts_missed",
+    "final_recommendation"
+  ],
+  "properties": {
+    "pass": { "type": "boolean" },
+    "risk_level": { "type": "string", "enum": ["low", "medium", "high"] },
+    "issues": { "type": "array" },
+    "required_fixes": { "type": "array" },
+    "unsupported_claims": { "type": "array" },
+    "conflicts_missed": { "type": "array" },
+    "final_recommendation": {
+      "type": "string",
+      "enum": ["approve", "revise", "block"]
+    }
+  },
+  "additionalProperties": false
+}
+

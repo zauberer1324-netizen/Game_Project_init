@@ -1,0 +1,14 @@
+{
+  "source_id": "src_001",
+  "facts": [
+    {
+      "claim": "Example source states that the product is approved for the condition.",
+      "value": "approved",
+      "location": "section: Indications",
+      "quote_or_anchor": "approved for",
+      "confidence": 0.85,
+      "extraction_risk": "low"
+    }
+  ]
+}
+

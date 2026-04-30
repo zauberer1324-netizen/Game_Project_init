@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "verification.schema.json",
+  "type": "object",
+  "required": ["verified_facts", "rejected_facts", "conflicts", "unknowns"],
+  "properties": {
+    "verified_facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim", "source_id", "location", "confidence"],
+        "properties": {
+          "claim": { "type": "string" },
+          "source_id": { "type": "string" },
+          "location": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "rejected_facts": { "type": "array" },
+    "conflicts": { "type": "array" },
+    "unknowns": { "type": "array" }
+  },
+  "additionalProperties": false
+}
+

@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "risk_level": "low",
+  "issues": [],
+  "required_fixes": [],
+  "unsupported_claims": [],
+  "conflicts_missed": [],
+  "final_recommendation": "approve"
+}

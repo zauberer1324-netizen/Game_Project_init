@@ -1,0 +1,14 @@
+{
+  "verified_facts": [
+    {
+      "claim": "Example source supports the claim at the cited location.",
+      "source_id": "src_001",
+      "location": "section: Example",
+      "confidence": 0.9,
+      "notes": "The claim is directly supported by the source location."
+    }
+  ],
+  "rejected_facts": [],
+  "conflicts": [],
+  "unknowns": []
+}

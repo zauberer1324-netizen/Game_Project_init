@@ -1,0 +1,10 @@
+{
+  "conflict_id": "conflict_001",
+  "topic": "Example conflicting value",
+  "source_a": "src_001",
+  "source_b": "src_002",
+  "difference": "Source A gives value X; Source B gives value Y.",
+  "preferred_value": "X",
+  "reason": "Source A is the latest official primary source in this example.",
+  "remaining_uncertainty": "Source B may be outdated or may apply to a different scope."
+}

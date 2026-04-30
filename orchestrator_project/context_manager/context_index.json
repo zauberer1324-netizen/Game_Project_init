@@ -1,0 +1,38 @@
+{
+  "routes": {
+    "data_analysis": [
+      "CONTEXT.md#Accuracy Rules",
+      "CONTEXT.md#Language"
+    ],
+    "bug": [
+      "CONTEXT.md#Language",
+      "CONTEXT.md#Game Development Rules"
+    ],
+    "game_dev": [
+      "CONTEXT.md#Language",
+      "CONTEXT.md#Game Development Rules"
+    ],
+    "feature": [
+      "CONTEXT.md#Language",
+      "CONTEXT.md#Relationships"
+    ],
+    "architecture": [
+      "CONTEXT.md#Language",
+      "CONTEXT.md#Relationships"
+    ],
+    "orchestrator_init": [
+      "AGENTS.md",
+      "CONTEXT.md#Language",
+      "docs/orchestrator/ORCHESTRATOR_MEMORY.md"
+    ],
+    "workstream_review": [
+      "AGENTS.md",
+      "CONTEXT.md#Language",
+      "docs/orchestrator/ORCHESTRATOR_MEMORY.md"
+    ],
+    "default": [
+      "CONTEXT.md#Language",
+      "AGENTS.md"
+    ]
+  }
+}
