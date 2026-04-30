@@ -74,6 +74,7 @@ try {
   $insideGit = $false
 }
 if ($insideGit) {
+  Invoke-Step $pythonPath .\scripts\check_workspace_mode.py --staged
   Invoke-Step $pythonPath .\scripts\check_path_policy.py --staged --role precommit
 }
 

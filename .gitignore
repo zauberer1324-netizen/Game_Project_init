@@ -35,3 +35,7 @@ data/rejected/*
 !data/extracted/.gitkeep
 !data/verified/.gitkeep
 !data/rejected/.gitkeep
+
+# Workspace guard runtime state
+.workspace_guard/*
+!.workspace_guard/.gitkeep

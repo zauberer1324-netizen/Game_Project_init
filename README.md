@@ -112,3 +112,9 @@ use the `workspace-continuity` skill and read:
 
 The goal is to recover state from files instead of relying on previous chat
 context.
+
+## Workspace Guard
+
+Optional soft locks for workstream and Orchestrator modes are documented in:
+
+- `docs/guides/workspace_guard.md`

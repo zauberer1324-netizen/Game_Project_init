@@ -52,10 +52,11 @@ None. Run `orchestrator-init` first so all workstreams share the same direction.
 
 ## Last Orchestration Action
 
-Added the `workspace-continuity` skill and workflow so Orchestrator and
-workstream chats can preserve state before closing, recover from files in new
-chats, and survive folder renames, moves, clones, and machine switches. Report:
-`docs/reports/workspace-continuity-implementation-report.md`.
+Added optional workspace mode guards without ACL hard locks. Workstream,
+orchestrator-proposal, orchestrator-apply, implementation, and unlocked modes can
+now apply read-only soft locks and Git/pre-commit checks to reduce accidental
+writes outside the active role. Report:
+`docs/reports/workspace-guard-implementation-report.md`.
 
 ## Next Recommended Orchestration Action
 

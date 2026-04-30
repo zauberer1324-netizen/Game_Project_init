@@ -98,3 +98,4 @@ Before promoting workstream proposals into central memory or `game_project/`, ru
 - Use `docs/rubrics/` to review workstream outputs without flattening creative choices.
 - Use `docs/reports/merge_preview_template.md` before central integration.
 - Use `workspace-continuity` before closing important chats, renaming or moving the folder, switching machines, or resuming from a new chat.
+- Use workspace mode guards when stronger accidental-write protection is needed for workstream, proposal, or implementation sessions.

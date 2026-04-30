@@ -1,74 +1,123 @@
 {
-    "version":  1,
-    "description":  "Project_game path policy. Workstreams propose in their own folders; the Orchestrator promotes accepted changes into central memory and game_project.",
-    "protected_paths":  [
-                            "CONTEXT.md",
-                            "docs/contracts/",
-                            "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
-                            "game_project/"
-                        ],
-    "workstream_required_outputs":  [
-                                        "OUTPUT.md",
-                                        "HANDOFF.md",
-                                        "proposed_context_updates.md",
-                                        "proposed_adr.md"
-                                    ],
-    "roles":  {
-                  "workstream":  {
-                                     "allowed_path_templates":  [
-                                                                    "workstreams/{workstream}/"
-                                                                ],
-                                     "blocked_paths":  [
-                                                           "CONTEXT.md",
-                                                           "docs/contracts/",
-                                                           "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
-                                                           "docs/prd/",
-                                                           "docs/adr/",
-                                                           "docs/issues/",
-                                                           "docs/reports/",
-                                                           "game_project/"
-                                                       ]
-                                 },
-                  "orchestrator":  {
-                                       "allowed_paths":  [
-                                                             "*"
-                                                         ],
-                                       "central_update_requires_any":  [
-                                                                           "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
-                                                                           "docs/reports/",
-                                                                           "docs/adr/",
-                                                                           "docs/prd/",
-                                                                           "docs/issues/",
-                                                                           "runs/"
-                                                                       ]
-                                   },
-                  "precommit":  {
-                                    "central_update_requires_any":  [
-                                                                        "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
-                                                                        "docs/reports/",
-                                                                        "docs/adr/",
-                                                                        "docs/prd/",
-                                                                        "docs/issues/",
-                                                                        "runs/"
-                                                                    ],
-                                    "allow_infrastructure_changes":  true
-                                }
-              },
-    "infrastructure_paths":  [
-                                 ".gitignore",
-                                 ".githooks/",
-                                 "orchestrator.config.json",
-                                 "workspace_policy.json",
-                                 "scripts/",
-                                 "orchestrator_project/scripts/",
-                                 "orchestrator_project/context_manager/",
-                                 "orchestrator_project/examples/",
-                                 "docs/maps/",
-                                 "docs/orchestrator/MEMORY_PROTOCOL.md",
-                                 "template.config.json",
-                                 "engine_profiles/",
-                                 "docs/startup/",
-                                 "docs/rubrics/",
-                                 "docs/git/"
-                             ]
+  "version": 1,
+  "description": "Project_game path policy. Workstreams propose in their own folders; the Orchestrator promotes accepted changes into central memory and game_project.",
+  "protected_paths": [
+    "CONTEXT.md",
+    "docs/contracts/",
+    "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
+    "game_project/"
+  ],
+  "workstream_required_outputs": [
+    "OUTPUT.md",
+    "HANDOFF.md",
+    "proposed_context_updates.md",
+    "proposed_adr.md"
+  ],
+  "roles": {
+    "workstream": {
+      "allowed_path_templates": [
+        "workstreams/{workstream}/"
+      ],
+      "blocked_paths": [
+        "CONTEXT.md",
+        "docs/contracts/",
+        "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
+        "docs/prd/",
+        "docs/adr/",
+        "docs/issues/",
+        "docs/reports/",
+        "game_project/"
+      ]
+    },
+    "orchestrator": {
+      "allowed_paths": [
+        "*"
+      ],
+      "central_update_requires_any": [
+        "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
+        "docs/reports/",
+        "docs/adr/",
+        "docs/prd/",
+        "docs/issues/",
+        "runs/"
+      ]
+    },
+    "precommit": {
+      "central_update_requires_any": [
+        "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
+        "docs/reports/",
+        "docs/adr/",
+        "docs/prd/",
+        "docs/issues/",
+        "runs/"
+      ],
+      "allow_infrastructure_changes": true
+    }
+  },
+  "infrastructure_paths": [
+    ".gitignore",
+    ".githooks/",
+    "orchestrator.config.json",
+    "workspace_policy.json",
+    "scripts/",
+    "orchestrator_project/scripts/",
+    "orchestrator_project/context_manager/",
+    "orchestrator_project/examples/",
+    "docs/maps/",
+    "docs/orchestrator/MEMORY_PROTOCOL.md",
+    "template.config.json",
+    "engine_profiles/",
+    "docs/startup/",
+    "docs/rubrics/",
+    "docs/git/",
+    ".workspace_guard/",
+    "scripts/check_workspace_mode.py",
+    "scripts/set_workspace_mode.ps1",
+    "scripts/clear_workspace_mode.ps1",
+    "docs/guides/"
+  ],
+  "workspace_modes": {
+    "unlocked": {
+      "description": "Normal flexible mode.",
+      "allowed_write_paths": [
+        "*"
+      ],
+      "lock_scope": "none"
+    },
+    "workstream": {
+      "description": "Specialist chat mode. Only the assigned workstream may be edited.",
+      "requires_workstream": true,
+      "allowed_path_templates": [
+        "workstreams/{workstream}/"
+      ],
+      "lock_scope": "all_except_allowed"
+    },
+    "orchestrator-proposal": {
+      "description": "Orchestrator review mode before user approval. Write reports and proposals only.",
+      "allowed_write_paths": [
+        "docs/reports/",
+        "runs/",
+        "docs/orchestrator/pending_memory_update.md"
+      ],
+      "lock_scope": "all_except_allowed"
+    },
+    "orchestrator-apply": {
+      "description": "Central integration mode after explicit user approval.",
+      "requires_approval": true,
+      "allowed_write_paths": [
+        "*"
+      ],
+      "lock_scope": "none"
+    },
+    "implementation": {
+      "description": "Approved game implementation mode.",
+      "allowed_write_paths": [
+        "game_project/",
+        "docs/issues/",
+        "docs/reports/",
+        "runs/"
+      ],
+      "lock_scope": "all_except_allowed"
+    }
+  }
 }

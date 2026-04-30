@@ -450,6 +450,48 @@ scripts/run_quality_gate.ps1
 
 이 안전장치는 OS 수준에서 AI의 파일 수정을 실시간 차단하지 않는다. 대신 잘못된 변경을 검증 시점이나 커밋 전에 잡는다. 즉 완전한 보안 장치가 아니라 실전용 안전망이다.
 
+### 9-1. 작업 모드와 소프트 파일 잠금
+
+더 강한 실수 방지가 필요하면 workspace guard를 켤 수 있다. 이 기능은 Windows ACL 강잠금이 아니라 read-only 속성과 Git hook 검사를 조합한 소프트 가드다.
+
+관련 가이드:
+
+```text
+docs/guides/workspace_guard.md
+```
+
+워크스트림 작업을 시작할 때:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_workspace_mode.ps1 -Mode workstream -Workstream physics_engine
+```
+
+오케스트레이터가 사용자 승인 전 검토만 할 때:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_workspace_mode.ps1 -Mode orchestrator-proposal
+```
+
+사용자가 중앙 반영을 승인했을 때:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_workspace_mode.ps1 -Mode orchestrator-apply -Approval "user-confirmed"
+```
+
+승인된 구현 작업을 할 때:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_workspace_mode.ps1 -Mode implementation
+```
+
+모드를 해제할 때:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\clear_workspace_mode.ps1
+```
+
+이 기능은 악의적인 코드 실행을 막는 보안 장치가 아니라, AI나 사용자가 실수로 권한 밖 파일을 수정하는 것을 줄이는 안전장치다. 같은 Windows 사용자 권한으로 실행되는 도구는 read-only 속성을 해제할 수 있으므로, 최종 방어선은 여전히 품질 게이트와 commit 전 검사다.
+
 Git hook을 사용하려면 다음을 실행한다.
 
 ```powershell

@@ -109,6 +109,10 @@ Expected first answer:
 - Blockers
 - Safe next tasks
 
+## Workspace Guard
+
+For stronger accidental-write protection, use `docs/guides/workspace_guard.md` before starting a workstream, proposal review, or approved implementation session.
+
 ## Folder Rename Or Move
 
 Before renaming or moving the folder:
