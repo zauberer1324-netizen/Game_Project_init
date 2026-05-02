@@ -11,8 +11,9 @@ belong in `docs/adr/`.
 ## Current Project Phase
 
 Initial structure, workstream architecture, workspace continuity, workspace
-guard, and Project Architect role support are in place. Game-specific vision and
-first prototype direction still need user-guided initialization.
+guard, Project Architect role support, and audio workstream scaffolding are in
+place. Game-specific vision and first prototype direction still need
+user-guided initialization.
 
 ## Current North Star Summary
 
@@ -31,6 +32,8 @@ Not yet defined. Run `orchestrator-init` before starting specialist workstreams.
 - `docs/reports/project-architect-implementation-report.md` - adds Project
   Architect as a workspace-structure role separate from Orchestrator and game
   development authority.
+- `docs/reports/audio-workstream-architecture-report.md` - adds proposal-only
+  `bgm/` and `game_sound/` workstreams plus the central `audio_contract.md`.
 
 ## Open Questions
 
@@ -39,6 +42,8 @@ Not yet defined. Run `orchestrator-init` before starting specialist workstreams.
 - What is the first playable prototype scope?
 - Which daily activities are in the first milestone?
 - What is the intended progression philosophy for the first playable build?
+- What is the first prototype's audio priority: BGM mood, gameplay feedback,
+  ambience, UI clarity, or silence-first implementation?
 
 ## Workstreams Ready To Start
 
@@ -49,6 +54,10 @@ None. Run `orchestrator-init` first so all workstreams share the same direction.
 - `character_design/` - blocked on game vision and art direction.
 - `illustration/` - blocked on game vision and art direction.
 - `storyline/` - blocked on narrative direction.
+- `bgm/` - blocked on game vision, narrative tone, audio direction, and asset
+  provenance rules.
+- `game_sound/` - blocked on game vision, gameplay contract, audio direction,
+  code interface expectations, and first prototype scope.
 - `physics_engine/` - blocked on gameplay contract and target engine.
 - `npc_system/` - blocked on narrative and gameplay contracts.
 - `ui_hud/` - blocked on gameplay and progression contracts.
@@ -60,11 +69,10 @@ None. Run `orchestrator-init` first so all workstreams share the same direction.
 
 ## Last Orchestration Action
 
-Added Project Architect support as an explicit workspace-structure management
-role. The template now includes a `project-architect` skill, a
-`project_architect` workflow route, a Project Architect guide, router validation,
-quality-gate dry-run coverage, and Project Architect workspace guard modes.
-Report: `docs/reports/project-architect-implementation-report.md`.
+Added audio workstream scaffolding. The template now includes `bgm/` and
+`game_sound/` proposal workstreams, `audio_contract.md`, audio dependency
+mappings, generated start prompts, and an audio architecture report.
+Report: `docs/reports/audio-workstream-architecture-report.md`.
 
 ## Next Recommended Orchestration Action
 

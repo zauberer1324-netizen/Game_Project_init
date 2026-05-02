@@ -1,81 +1,100 @@
 {
-  "version": 1,
-  "contracts_root": "docs/contracts",
-  "dependencies": {
-    "character_design": {
-      "contracts": [
-        "game_vision.md",
-        "art_direction.md",
-        "narrative_contract.md"
-      ],
-      "why": "Character designs must match the game fantasy, visual tone, and world logic."
-    },
-    "illustration": {
-      "contracts": [
-        "game_vision.md",
-        "art_direction.md",
-        "asset_pipeline_contract.md"
-      ],
-      "why": "Illustration output must fit the visual direction and asset pipeline."
-    },
-    "storyline": {
-      "contracts": [
-        "game_vision.md",
-        "narrative_contract.md"
-      ],
-      "why": "Story output defines or depends on setting, tone, conflict, and character voice."
-    },
-    "physics_engine": {
-      "contracts": [
-        "gameplay_contract.md",
-        "code_interface_contract.md"
-      ],
-      "why": "Physics behavior must match player-facing rules and implementation interfaces."
-    },
-    "npc_system": {
-      "contracts": [
-        "narrative_contract.md",
-        "gameplay_contract.md",
-        "code_interface_contract.md"
-      ],
-      "why": "NPCs connect world logic, gameplay behavior, and code interfaces."
-    },
-    "ui_hud": {
-      "contracts": [
-        "gameplay_contract.md",
-        "progression_contract.md",
-        "art_direction.md",
-        "code_interface_contract.md"
-      ],
-      "why": "UI must present gameplay state, proficiency, and visual tone consistently."
-    },
-    "level_design": {
-      "contracts": [
-        "game_vision.md",
-        "gameplay_contract.md",
-        "daily_activity_contract.md",
-        "progression_contract.md",
-        "level_design_contract.md"
-      ],
-      "why": "Level design owns spatial pacing, activity placement, and skill-gated locations."
-    },
-    "progression_system": {
-      "contracts": [
-        "game_vision.md",
-        "gameplay_contract.md",
-        "daily_activity_contract.md",
-        "progression_contract.md",
-        "code_interface_contract.md"
-      ],
-      "why": "Progression owns central proficiency rules, XP curves, unlocks, UI contract, and save shape."
-    },
-    "daily_activities/*": {
-      "contracts": [
-        "game_vision.md",
-        "daily_activity_contract.md",
-        "progression_contract.md"
-      ],
-      "why": "Activities propose loops, risks, rewards, XP events, and unlock candidates."
-    }
-  }
+    "version":  1,
+    "contracts_root":  "docs/contracts",
+    "dependencies":  {
+                         "character_design":  {
+                                                  "contracts":  [
+                                                                    "game_vision.md",
+                                                                    "art_direction.md",
+                                                                    "narrative_contract.md"
+                                                                ],
+                                                  "why":  "Character designs must match the game fantasy, visual tone, and world logic."
+                                              },
+                         "illustration":  {
+                                              "contracts":  [
+                                                                "game_vision.md",
+                                                                "art_direction.md",
+                                                                "asset_pipeline_contract.md"
+                                                            ],
+                                              "why":  "Illustration output must fit the visual direction and asset pipeline."
+                                          },
+                         "storyline":  {
+                                           "contracts":  [
+                                                             "game_vision.md",
+                                                             "narrative_contract.md"
+                                                         ],
+                                           "why":  "Story output defines or depends on setting, tone, conflict, and character voice."
+                                       },
+                         "physics_engine":  {
+                                                "contracts":  [
+                                                                  "gameplay_contract.md",
+                                                                  "code_interface_contract.md"
+                                                              ],
+                                                "why":  "Physics behavior must match player-facing rules and implementation interfaces."
+                                            },
+                         "npc_system":  {
+                                            "contracts":  [
+                                                              "narrative_contract.md",
+                                                              "gameplay_contract.md",
+                                                              "code_interface_contract.md"
+                                                          ],
+                                            "why":  "NPCs connect world logic, gameplay behavior, and code interfaces."
+                                        },
+                         "ui_hud":  {
+                                        "contracts":  [
+                                                          "gameplay_contract.md",
+                                                          "progression_contract.md",
+                                                          "art_direction.md",
+                                                          "code_interface_contract.md"
+                                                      ],
+                                        "why":  "UI must present gameplay state, proficiency, and visual tone consistently."
+                                    },
+                         "level_design":  {
+                                              "contracts":  [
+                                                                "game_vision.md",
+                                                                "gameplay_contract.md",
+                                                                "daily_activity_contract.md",
+                                                                "progression_contract.md",
+                                                                "level_design_contract.md"
+                                                            ],
+                                              "why":  "Level design owns spatial pacing, activity placement, and skill-gated locations."
+                                          },
+                         "progression_system":  {
+                                                    "contracts":  [
+                                                                      "game_vision.md",
+                                                                      "gameplay_contract.md",
+                                                                      "daily_activity_contract.md",
+                                                                      "progression_contract.md",
+                                                                      "code_interface_contract.md"
+                                                                  ],
+                                                    "why":  "Progression owns central proficiency rules, XP curves, unlocks, UI contract, and save shape."
+                                                },
+                         "daily_activities/*":  {
+                                                    "contracts":  [
+                                                                      "game_vision.md",
+                                                                      "daily_activity_contract.md",
+                                                                      "progression_contract.md"
+                                                                  ],
+                                                    "why":  "Activities propose loops, risks, rewards, XP events, and unlock candidates."
+                                                },
+                         "bgm":  {
+                                     "contracts":  [
+                                                       "game_vision.md",
+                                                       "narrative_contract.md",
+                                                       "audio_contract.md",
+                                                       "asset_pipeline_contract.md"
+                                                   ],
+                                     "why":  "BGM must match the game fantasy, narrative tone, audio standards, and asset provenance rules."
+                                 },
+                         "game_sound":  {
+                                            "contracts":  [
+                                                              "game_vision.md",
+                                                              "gameplay_contract.md",
+                                                              "audio_contract.md",
+                                                              "asset_pipeline_contract.md",
+                                                              "code_interface_contract.md"
+                                                          ],
+                                            "why":  "Game sound must match player-facing gameplay, shared audio standards, asset rules, and implementation event interfaces."
+                                        }
+                     }
 }

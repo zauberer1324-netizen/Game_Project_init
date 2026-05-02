@@ -66,11 +66,11 @@
                                                                   "orchestrator_project/context_manager/",
                                                                   "scripts/",
                                                                   "workstreams/",
-                                                                  "runs/"
+                                                                  "runs/",
+                                                                  "docs/contracts/"
                                                               ],
                                             "blocked_paths":  [
                                                                   "CONTEXT.md",
-                                                                  "docs/contracts/",
                                                                   "docs/prd/",
                                                                   "docs/adr/",
                                                                   "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
@@ -170,7 +170,8 @@
                                                                                         "orchestrator_project/context_manager/",
                                                                                         "scripts/",
                                                                                         "workstreams/",
-                                                                                        "runs/"
+                                                                                        "runs/",
+                                                                                        "docs/contracts/"
                                                                                     ],
                                                             "lock_scope":  "all_except_allowed"
                                                         }

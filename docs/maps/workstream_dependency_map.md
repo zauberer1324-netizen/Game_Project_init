@@ -24,6 +24,8 @@ Edit that JSON file first, then regenerate this document.
 | `level_design/` | `game_vision.md`, `gameplay_contract.md`, `daily_activity_contract.md`, `progression_contract.md`, `level_design_contract.md` | Level design owns spatial pacing, activity placement, and skill-gated locations. |
 | `progression_system/` | `game_vision.md`, `gameplay_contract.md`, `daily_activity_contract.md`, `progression_contract.md`, `code_interface_contract.md` | Progression owns central proficiency rules, XP curves, unlocks, UI contract, and save shape. |
 | `daily_activities/*` | `game_vision.md`, `daily_activity_contract.md`, `progression_contract.md` | Activities propose loops, risks, rewards, XP events, and unlock candidates. |
+| `bgm/` | `game_vision.md`, `narrative_contract.md`, `audio_contract.md`, `asset_pipeline_contract.md` | BGM must match the game fantasy, narrative tone, audio standards, and asset provenance rules. |
+| `game_sound/` | `game_vision.md`, `gameplay_contract.md`, `audio_contract.md`, `asset_pipeline_contract.md`, `code_interface_contract.md` | Game sound must match player-facing gameplay, shared audio standards, asset rules, and implementation event interfaces. |
 
 ## Ownership Boundaries
 
@@ -34,6 +36,13 @@ Edit that JSON file first, then regenerate this document.
 - `level_design/` owns regions, routes, activity placement, resource density,
   risk placement, pacing, and skill-gated location proposals.
 - `level_design/` must not own XP formulas or central proficiency curves.
+- `bgm/` owns background music direction proposals, cue sheets, motifs, loops,
+  transitions, stingers, references, and BGM asset briefs.
+- `game_sound/` owns gameplay SFX proposals, UI audio proposals, ambience
+  proposals, audio event naming proposals, playback priority, variation, and
+  verification notes.
+- Audio workstreams may propose sound needs, but the Orchestrator promotes only
+  accepted audio decisions into contracts, ADRs, PRDs, issues, or implementation.
 - Workstreams must not directly promote proposals into `CONTEXT.md`,
   `docs/contracts/`, `docs/adr/`, `docs/issues/`, or `game_project/`.
 

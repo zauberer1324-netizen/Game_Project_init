@@ -1,4 +1,4 @@
-﻿# Workstreams
+# Workstreams
 
 Workstreams are isolated workspaces for separate AI chat sessions. Each
 workstream should produce a focused result and a compact handoff for the
@@ -19,3 +19,12 @@ Orchestrator.
 ## Orchestrator Intake Order
 
 The Orchestrator should read `HANDOFF.md` before detailed outputs and artifacts.
+
+## Audio Workstreams
+
+- `bgm/` proposes background music direction, cue sheets, motifs, loops,
+  transitions, stingers, references, and BGM asset briefs.
+- `game_sound/` proposes gameplay SFX, UI audio, ambience, event naming,
+  playback priority, variation, and verification notes.
+- Storyline, UI/HUD, level design, and NPC workstreams may request audio needs,
+  but accepted audio decisions are promoted by the Orchestrator.

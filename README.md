@@ -7,14 +7,14 @@ game project memory and code.
 
 ```text
 Project_game/
-├─ AGENTS.md                  # Root rules for AI work in this workspace
-├─ CONTEXT.md                 # Game-specific living memory
-├─ docs/                      # Game-specific PRDs, ADRs, issues, reports
-├─ data/                      # Game-specific evidence artifacts
-├─ runs/                      # Game-specific run logs and generated prompts
-├─ scripts/                   # Project-level helpers
-├─ orchestrator_project/      # Reusable AI operating framework
-└─ game_project/              # Actual game code and assets
+|- AGENTS.md                  # Root rules for AI work in this workspace
+|- CONTEXT.md                 # Game-specific living memory
+|- docs/                      # Game-specific PRDs, ADRs, issues, reports
+|- data/                      # Game-specific evidence artifacts
+|- runs/                      # Game-specific run logs and generated prompts
+|- scripts/                   # Project-level helpers
+|- orchestrator_project/      # Reusable AI operating framework
+`- game_project/              # Actual game code and assets
 ```
 
 ## How To Use
@@ -40,7 +40,6 @@ Generate a prompt using root project memory and framework skills:
 python .\scripts\run_project_orchestrator.py --request "Make a 2D platformer prototype" --intent game_dev --task-type feature --risk medium --dry-run
 ```
 
-
 ## Full User Guide
 
 Read the detailed Korean guide here:
@@ -62,6 +61,17 @@ Key rule:
 workstreams propose, Orchestrator integrates.
 ```
 
+## Audio Workstreams
+
+Audio production is split into `workstreams/bgm/` and
+`workstreams/game_sound/`. Both are proposal spaces. Accepted audio decisions
+should be reviewed by the Orchestrator and promoted into `docs/contracts/`,
+`docs/adr/`, `docs/prd/`, `docs/issues/`, or `game_project/` only after review.
+
+The central audio rules live in:
+
+- `docs/contracts/audio_contract.md`
+
 ## Guardrails
 
 Install git hooks after creating or copying a project workspace:
@@ -79,7 +89,9 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_quality_ga
 ```
 
 The guardrails check path policy, router sync, schema examples, memory freshness,
-and the two orchestration dry-runs.
+workstream dependencies, start prompts, engine profiles, workspace mode, and
+orchestration dry-runs.
+
 ## New Game Startup
 
 Start with:
@@ -102,6 +114,7 @@ python .\scripts\scaffold_engine_profile.py phaser_typescript --write
 
 Use the selected profile's Game Test Gate as the project-specific game test
 layer in addition to the workspace quality gate.
+
 ## Workspace Continuity
 
 Before renaming or moving the folder, switching machines, or starting a new chat,
@@ -118,6 +131,7 @@ context.
 Optional soft locks for workstream and Orchestrator modes are documented in:
 
 - `docs/guides/workspace_guard.md`
+
 ## Project Architect
 
 Use `project-architect` for workspace structure management, not game direction.

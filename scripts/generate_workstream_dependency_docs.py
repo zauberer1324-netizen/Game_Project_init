@@ -45,6 +45,13 @@ Edit that JSON file first, then regenerate this document.
 - `level_design/` owns regions, routes, activity placement, resource density,
   risk placement, pacing, and skill-gated location proposals.
 - `level_design/` must not own XP formulas or central proficiency curves.
+- `bgm/` owns background music direction proposals, cue sheets, motifs, loops,
+  transitions, stingers, references, and BGM asset briefs.
+- `game_sound/` owns gameplay SFX proposals, UI audio proposals, ambience
+  proposals, audio event naming proposals, playback priority, variation, and
+  verification notes.
+- Audio workstreams may propose sound needs, but the Orchestrator promotes only
+  accepted audio decisions into contracts, ADRs, PRDs, issues, or implementation.
 - Workstreams must not directly promote proposals into `CONTEXT.md`,
   `docs/contracts/`, `docs/adr/`, `docs/issues/`, or `game_project/`.
 
