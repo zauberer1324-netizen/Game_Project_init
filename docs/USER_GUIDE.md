@@ -1031,3 +1031,50 @@ python .\scripts\draft_memory_update.py --write
 ```
 
 따라서 이 폴더를 압축해 보관해두고, 새 게임을 시작할 때마다 복사해서 쓰면 된다. 단, 복사 후 바로 구현하지 말고 `orchestrator-init`부터 시작하는 것이 안전하다.
+---
+
+## Project Architect 사용법
+
+Project Architect는 게임 개발 오케스트레이터가 아니라 작업공간 구조 관리자다. 스킬, 워크플로우, 라우터, 워크스트림 폴더, dependency map, guardrail, 품질 게이트 같은 구조를 점검하고 설계한다.
+
+사용 상황:
+
+- 새 워크스트림을 추가하고 싶을 때
+- skill/workflow/router 구조를 바꾸고 싶을 때
+- 폴더 구조가 설계와 맞는지 점검하고 싶을 때
+- workspace guard나 품질 게이트를 보완하고 싶을 때
+- 오케스트레이터 메모리와 구조 변경 사이에 불일치가 생겼을 때
+
+시작 프롬프트:
+
+```text
+너는 Project Architect야.
+오케스트레이터나 게임 개발자가 아니라, 프로젝트 작업공간 구조 관리자 역할이야.
+먼저 AGENTS.md, workspace_policy.json, orchestrator.config.json,
+orchestrator_project/context_manager/select_skill.py,
+scripts/check_router_sync.py, scripts/run_quality_gate.ps1,
+docs/maps/workstream_dependencies.json,
+docs/orchestrator/ORCHESTRATOR_MEMORY.md,
+docs/orchestrator/MEMORY_PROTOCOL.md를 읽고,
+전체 폴더/파일 인벤토리를 확인해 구조를 점검해줘.
+이 init 단계에서는 파일을 수정하지 말고,
+모호한 부분은 추천안을 포함한 질문으로 확인한 뒤,
+정리된 설계도를 작성해줘.
+사용자 컨펌 전에는 실제 작업에 들어가지 마.
+```
+
+권장 workspace guard 모드:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_workspace_mode.ps1 -Mode project-architect-proposal
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_workspace_mode.ps1 -Mode project-architect-apply -Approval "user-confirmed"
+```
+
+오케스트레이터 메모리 규칙:
+
+```text
+Project Architect는 기본적으로 docs/orchestrator/pending_memory_update.md를 작성한다.
+ORCHESTRATOR_MEMORY.md 최종 반영은 오케스트레이터가 한다.
+```
+
+예외적으로 사용자가 명시 승인한 경우에만 Project Architect가 구조적 사실에 한해 `ORCHESTRATOR_MEMORY.md`를 직접 수정할 수 있다. 게임 방향, 워크스트림 산출물 승인, 프로토타입 포함 여부, `game_project/` 반영 판단은 수정하면 안 된다.

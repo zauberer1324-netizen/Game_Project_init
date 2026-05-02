@@ -19,6 +19,8 @@ It does not use Windows ACL hard locks. It uses:
 | `orchestrator-proposal` | Orchestrator is reviewing before user approval | `docs/reports/`, `runs/`, `docs/orchestrator/pending_memory_update.md` |
 | `orchestrator-apply` | User has approved central integration | All paths |
 | `implementation` | Approved game implementation work | `game_project/`, `docs/issues/`, `docs/reports/`, `runs/` |
+| `project-architect-proposal` | Project Architect planning before approval | `docs/reports/`, `runs/`, `docs/orchestrator/pending_memory_update.md` |
+| `project-architect-apply` | Approved structural edits | structure files, routes, scripts, maps, guides, workstream scaffolds |
 
 ## Workstream Mode
 
@@ -77,3 +79,10 @@ Because Codex and other tools run as the same Windows user, they can technically
 remove read-only attributes if instructed to do so. The value of this guard is
 that accidental edits fail earlier, and staged files are still checked before
 commit.
+
+## Project Architect Modes
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_workspace_mode.ps1 -Mode project-architect-proposal
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_workspace_mode.ps1 -Mode project-architect-apply -Approval "user-confirmed"
+```

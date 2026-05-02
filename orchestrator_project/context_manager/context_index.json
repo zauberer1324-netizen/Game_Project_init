@@ -39,6 +39,13 @@
       "CONTEXT.md#Language",
       "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
       "docs/orchestrator/MEMORY_PROTOCOL.md"
+    ],
+    "project_architect": [
+      "AGENTS.md",
+      "CONTEXT.md#Language",
+      "docs/guides/project_architect_workflow.md",
+      "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
+      "docs/maps/workstream_dependency_map.md"
     ]
   }
 }

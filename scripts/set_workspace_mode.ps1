@@ -1,6 +1,6 @@
 param(
   [Parameter(Mandatory=$true)]
-  [ValidateSet("unlocked", "workstream", "orchestrator-proposal", "orchestrator-apply", "implementation")]
+  [ValidateSet("unlocked", "workstream", "orchestrator-proposal", "orchestrator-apply", "implementation", "project-architect-proposal", "project-architect-apply")]
   [string]$Mode,
 
   [string]$Workstream,

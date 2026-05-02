@@ -63,6 +63,7 @@ Invoke-StepQuiet $pythonPath .\scripts\build_merge_preview.py physics_engine
 Invoke-StepQuiet $pythonPath .\scripts\run_project_orchestrator.py --request "Initialize game direction" --intent orchestrator_init --task-type init --risk medium --dry-run
 Invoke-StepQuiet $pythonPath .\scripts\run_project_orchestrator.py --request "Review a workstream handoff" --intent workstream_review --task-type review --risk medium --dry-run
 Invoke-StepQuiet $pythonPath .\scripts\run_project_orchestrator.py --request "Recover workspace state" --intent workspace_continuity --task-type resume --risk medium --dry-run
+Invoke-StepQuiet $pythonPath .\scripts\run_project_orchestrator.py --request "Inspect workspace structure" --intent project_architect --task-type project_manager_init --risk medium --dry-run
 
 $insideGit = $false
 try {

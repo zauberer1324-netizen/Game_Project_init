@@ -7,6 +7,9 @@ def select_skills(intent: str, task_type: str, risk_level: str) -> list[str]:
     if intent in {"workspace_continuity", "continuity"} or task_type in {"workspace_continuity", "continuity", "resume", "close"}:
         skills.append("workspace-continuity")
 
+    if intent in {"project_architect", "project_manager", "structure_review"} or task_type in {"project_architect", "project_manager_init", "structure_review", "workspace_structure"}:
+        skills.append("project-architect")
+
     if intent in {"orchestrator_init", "init"} or task_type in {"orchestrator_init", "init"}:
         skills.append("orchestrator-init")
 

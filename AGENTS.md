@@ -99,3 +99,11 @@ Before promoting workstream proposals into central memory or `game_project/`, ru
 - Use `docs/reports/merge_preview_template.md` before central integration.
 - Use `workspace-continuity` before closing important chats, renaming or moving the folder, switching machines, or resuming from a new chat.
 - Use workspace mode guards when stronger accidental-write protection is needed for workstream, proposal, or implementation sessions.
+## Project Architect Rules
+
+Use `project-architect` for workspace-structure work: skills, workflows,
+routes, guardrails, dependency maps, workstream scaffolding, and user-facing
+structure guides. Project Architect does not own game direction, workstream
+acceptance, or `game_project/` integration. For Orchestrator memory mismatches,
+Project Architect should normally write `docs/orchestrator/pending_memory_update.md`
+and let the Orchestrator apply final `ORCHESTRATOR_MEMORY.md` changes.

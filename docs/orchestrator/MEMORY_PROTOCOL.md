@@ -55,3 +55,12 @@ python .\scripts\check_memory_freshness.py
 
 If the check reports newer handoffs, PRDs, ADRs, or reports, update the memory
 or intentionally explain why it does not need an update.
+## Project Architect Updates
+
+When Project Architect changes workspace structure, it should normally write a
+structure report and `docs/orchestrator/pending_memory_update.md`. The
+Orchestrator applies final `ORCHESTRATOR_MEMORY.md` changes after review.
+
+Project Architect may update `ORCHESTRATOR_MEMORY.md` directly only with
+explicit user approval, and only for structural facts, not game direction or
+workstream acceptance.

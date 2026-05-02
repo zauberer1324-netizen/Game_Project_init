@@ -10,8 +10,9 @@ belong in `docs/adr/`.
 
 ## Current Project Phase
 
-Initial structure and workstream architecture are in place. Game-specific vision
-and first prototype direction still need user-guided initialization.
+Initial structure, workstream architecture, workspace continuity, workspace
+guard, and Project Architect role support are in place. Game-specific vision and
+first prototype direction still need user-guided initialization.
 
 ## Current North Star Summary
 
@@ -23,6 +24,13 @@ Not yet defined. Run `orchestrator-init` before starting specialist workstreams.
   reusable orchestration framework from game-specific memory.
 - `docs/adr/0002-use-workstreams-for-parallel-chat-development.md` - uses scoped
   workstreams and Orchestrator review before central integration.
+- `docs/reports/workspace-continuity-implementation-report.md` - adds recovery
+  workflow for folder renames, machine switches, and new chat sessions.
+- `docs/reports/workspace-guard-implementation-report.md` - adds optional
+  read-only workspace mode guards without ACL hard locks.
+- `docs/reports/project-architect-implementation-report.md` - adds Project
+  Architect as a workspace-structure role separate from Orchestrator and game
+  development authority.
 
 ## Open Questions
 
@@ -52,13 +60,19 @@ None. Run `orchestrator-init` first so all workstreams share the same direction.
 
 ## Last Orchestration Action
 
-Added optional workspace mode guards without ACL hard locks. Workstream,
-orchestrator-proposal, orchestrator-apply, implementation, and unlocked modes can
-now apply read-only soft locks and Git/pre-commit checks to reduce accidental
-writes outside the active role. Report:
-`docs/reports/workspace-guard-implementation-report.md`.
+Added Project Architect support as an explicit workspace-structure management
+role. The template now includes a `project-architect` skill, a
+`project_architect` workflow route, a Project Architect guide, router validation,
+quality-gate dry-run coverage, and Project Architect workspace guard modes.
+Report: `docs/reports/project-architect-implementation-report.md`.
 
 ## Next Recommended Orchestration Action
 
-Run `orchestrator-init` with the user to define the game's north star, first
-prototype scope, initial contracts, and workstream briefs.
+For game-start work in this Orchestrator chat, run `orchestrator-init` with
+the user to define the game's north star, first prototype scope, initial
+contracts, and workstream briefs.
+
+If the user asks for workspace-structure changes such as folders, skills,
+workflows, routers, guardrails, or workstream scaffolds, do not handle that
+request as the Orchestrator. Ask the user to open or switch to a separate
+Project Architect chat and run Project Architect init there.

@@ -118,3 +118,10 @@ context.
 Optional soft locks for workstream and Orchestrator modes are documented in:
 
 - `docs/guides/workspace_guard.md`
+## Project Architect
+
+Use `project-architect` for workspace structure management, not game direction.
+Read:
+
+- `docs/guides/project_architect_workflow.md`
+- `orchestrator_project/skills/project-architect/SKILL.md`
