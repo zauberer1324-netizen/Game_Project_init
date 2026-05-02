@@ -27,6 +27,7 @@ The Project Architect owns:
 - Workspace guard and quality-gate structure
 - Workstream scaffolding consistency
 - Dependency-map consistency
+- Workspace identity/reset tooling
 - Structure reports
 - Pending memory-update proposals
 
@@ -37,19 +38,21 @@ The Project Architect must not silently act as the Orchestrator.
 Use this prompt when starting a Project Architect chat:
 
 ```text
-너는 Project Architect야.
-오케스트레이터나 게임 개발자가 아니라, 프로젝트 작업공간 구조 관리자 역할이야.
-먼저 AGENTS.md, workspace_policy.json, orchestrator.config.json,
+You are the Project Architect.
+You are not the Orchestrator and you are not a game-development workstream.
+Your job is to inspect and maintain the project workspace structure.
+
+First read AGENTS.md, workspace_policy.json, orchestrator.config.json,
 orchestrator_project/context_manager/select_skill.py,
 scripts/check_router_sync.py, scripts/run_quality_gate.ps1,
 docs/maps/workstream_dependencies.json,
 docs/orchestrator/ORCHESTRATOR_MEMORY.md,
-docs/orchestrator/MEMORY_PROTOCOL.md를 읽고,
-전체 폴더/파일 인벤토리를 확인해 구조를 점검해줘.
-이 init 단계에서는 파일을 수정하지 말고,
-모호한 부분은 추천안을 포함한 질문으로 확인한 뒤,
-정리된 설계도를 작성해줘.
-사용자 컨펌 전에는 실제 작업에 들어가지 마.
+docs/orchestrator/MEMORY_PROTOCOL.md,
+docs/guides/project_architect_workflow.md.
+
+Inventory the folder and file structure. During init, do not edit files.
+If the request is ambiguous, ask a clarifying question with a recommended path.
+Then write a design plan and wait for my confirmation before making changes.
 ```
 
 ## Required Init Checks
@@ -64,18 +67,55 @@ docs/orchestrator/MEMORY_PROTOCOL.md를 읽고,
 - Check generated START_PROMPT consistency.
 - Check workspace guard modes.
 - Check whether quality gates cover new structure.
+- Check `template.config.json` only when workspace identity/reset tooling is relevant.
+- Check `workstreams/_template/` when workstream scaffolding is relevant.
 - Do not edit files during init.
+
+## Project Architect Tooling Boundaries
+
+Project Architect tools are split into two groups. Do not mix their purposes.
+
+### Workspace Identity And Reset Tooling
+
+Use these only when the workspace identity, project display name, runtime state,
+or compact Orchestrator memory needs to be reset or re-seeded.
+
+- `template.config.json`
+- `scripts/initialize_from_template.py`
+
+These tools do not add workstreams. They are not part of the normal user flow
+for a fresh clone unless the user wants to rename/re-seed the workspace or the
+Project Architect explicitly recommends a reset.
+
+### Workstream Scaffolding Tooling
+
+Use these when adding, removing, or revising workstream structure.
+
+- `workstreams/_template/`
+- `docs/maps/workstream_dependencies.json`
+- `scripts/generate_workstream_dependency_docs.py`
+- `scripts/generate_workstream_prompts.py`
+- `workspace_policy.json` when path boundaries change
+
+Standard workstream scaffolding sequence:
+
+1. Identify the new or changed workstream and its owner boundary.
+2. Copy or adapt `workstreams/_template/`.
+3. Add the workstream dependency entry to `docs/maps/workstream_dependencies.json`.
+4. Regenerate dependency docs and `START_PROMPT.md` files.
+5. Check path policy and quality gate coverage.
+6. Write a structure report and memory update proposal.
 
 ## Ambiguous Request Format
 
 When the user gives an ambiguous structural request, ask:
 
 ```text
-모호한 점:
-왜 중요한지:
-추천안:
-대안:
-확인 질문:
+Ambiguity:
+Why it matters:
+Recommended path:
+Alternatives:
+Confirmation question:
 ```
 
 ## Pre-Edit Design Format
@@ -117,7 +157,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\set_workspace_
 After approved work:
 
 ```powershell
-$env:PYTHON_BIN = "C:\Users\이중원\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
+$env:PYTHON_BIN = "C:\path\to\python.exe"
 & $env:PYTHON_BIN .\scripts\sync_context_index.py --write
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\run_quality_gate.ps1
 ```

@@ -77,6 +77,14 @@ approved implementation changes to `game_project/`.
 - `workstreams/level_design/` owns region structure, activity placement, pacing,
   and skill-gated location proposals. It does not own XP formulas.
 
+## Local Agent Support Docs
+
+- `docs/agents/domain.md` summarizes the split workspace domain model.
+- `docs/agents/issue-tracker.md` describes local markdown issue conventions.
+- `docs/agents/triage-labels.md` defines local triage labels for issue work.
+
+Read these when planning local issue workflows, triage, or repository handoff conventions.
+
 ## Tooling And Guardrails
 
 - `workspace_policy.json` defines protected paths and workstream boundaries.
@@ -90,7 +98,8 @@ approved implementation changes to `game_project/`.
 Before promoting workstream proposals into central memory or `game_project/`, run the quality gate when practical.
 ## Template Reuse Rules
 
-- Use `docs/startup/` before starting a new game from this template.
+- Use `docs/startup/` before starting a new game from this workspace.
+- `template.config.json` and `scripts/initialize_from_template.py` are Project Architect workspace identity/reset tools, not normal Orchestrator tools.
 - Use each workstream's `START_PROMPT.md` when opening a specialist chat.
 - Use `engine_profiles/` only after engine selection or when comparing engine choices.
 - Engine-specific game tests live inside the selected engine profile's `Game Test Gate`.

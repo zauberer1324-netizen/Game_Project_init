@@ -132,6 +132,12 @@ Optional soft locks for workstream and Orchestrator modes are documented in:
 
 - `docs/guides/workspace_guard.md`
 
+## Environment
+
+This workspace is Windows/PowerShell-first. Python helpers use the standard
+library unless a game-specific engine profile adds its own dependencies. Use
+Python 3.10+ when practical.
+
 ## Project Architect
 
 Use `project-architect` for workspace structure management, not game direction.
@@ -139,3 +145,7 @@ Read:
 
 - `docs/guides/project_architect_workflow.md`
 - `orchestrator_project/skills/project-architect/SKILL.md`
+
+Project Architect also owns workspace identity/reset tooling such as
+`template.config.json` and `scripts/initialize_from_template.py`. These are not
+normal Orchestrator tools and are not used to add workstreams.

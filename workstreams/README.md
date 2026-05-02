@@ -28,3 +28,28 @@ The Orchestrator should read `HANDOFF.md` before detailed outputs and artifacts.
   playback priority, variation, and verification notes.
 - Storyline, UI/HUD, level design, and NPC workstreams may request audio needs,
   but accepted audio decisions are promoted by the Orchestrator.
+
+## New Workstream Scaffolding
+
+New workstreams are Project Architect structural changes. Do not create them
+inside a specialist workstream chat.
+
+Recommended sequence:
+
+1. Define the new workstream's ownership boundary.
+2. Copy or adapt `workstreams/_template/`.
+3. Add the dependency entry to `docs/maps/workstream_dependencies.json`.
+4. Regenerate derived files:
+
+```powershell
+python .\scripts\generate_workstream_dependency_docs.py --write
+python .\scripts\generate_workstream_prompts.py --write
+```
+
+5. Run the quality gate.
+6. Write a structure report and update Orchestrator memory or a pending memory
+   update according to the Project Architect memory boundary.
+
+`workstreams/_template/` intentionally does not contain `START_PROMPT.md`.
+`START_PROMPT.md` is generated from the dependency map and each workstream's
+`BRIEF.md`.

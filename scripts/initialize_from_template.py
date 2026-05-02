@@ -1,3 +1,11 @@
+"""Workspace identity/reset tool managed by the Project Architect.
+
+Use this script when the current workspace needs project-name replacement,
+runtime folder cleanup, or a compact Orchestrator memory reset. This is not the
+standard user flow after a fresh clone, and it is not a workstream scaffolding
+tool. New or changed workstreams should be handled through `workstreams/_template/`,
+`docs/maps/workstream_dependencies.json`, and the workstream generation scripts.
+"""
 from __future__ import annotations
 
 import argparse

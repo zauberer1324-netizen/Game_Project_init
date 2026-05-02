@@ -67,11 +67,19 @@
                                                                   "scripts/",
                                                                   "workstreams/",
                                                                   "runs/",
-                                                                  "docs/contracts/"
+                                                                  "docs/contracts/",
+                                                                  "README.md",
+                                                                  "AGENTS.md",
+                                                                  "docs/USER_GUIDE.md",
+                                                                  "docs/startup/",
+                                                                  "docs/prd/README.md",
+                                                                  "docs/issues/README.md",
+                                                                  "docs/agents/",
+                                                                  "data/README.md",
+                                                                  "runs/README.md"
                                                               ],
                                             "blocked_paths":  [
                                                                   "CONTEXT.md",
-                                                                  "docs/prd/",
                                                                   "docs/adr/",
                                                                   "docs/orchestrator/ORCHESTRATOR_MEMORY.md",
                                                                   "game_project/"
@@ -171,7 +179,16 @@
                                                                                         "scripts/",
                                                                                         "workstreams/",
                                                                                         "runs/",
-                                                                                        "docs/contracts/"
+                                                                                        "docs/contracts/",
+                                                                                        "README.md",
+                                                                                        "AGENTS.md",
+                                                                                        "docs/USER_GUIDE.md",
+                                                                                        "docs/startup/",
+                                                                                        "docs/prd/README.md",
+                                                                                        "docs/issues/README.md",
+                                                                                        "docs/agents/",
+                                                                                        "data/README.md",
+                                                                                        "runs/README.md"
                                                                                     ],
                                                             "lock_scope":  "all_except_allowed"
                                                         }

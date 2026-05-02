@@ -71,11 +71,13 @@ Read or inspect:
 - `README.md`
 - `CONTEXT.md`
 - `workspace_policy.json`
+- `template.config.json`
 - `orchestrator.config.json`
 - `orchestrator_project/context_manager/context_index.json`
 - `orchestrator_project/context_manager/select_skill.py`
 - `scripts/check_router_sync.py`
 - `scripts/run_quality_gate.ps1`
+- `scripts/initialize_from_template.py` when workspace identity/reset tooling is relevant
 - `docs/orchestrator/ORCHESTRATOR_MEMORY.md`
 - `docs/orchestrator/MEMORY_PROTOCOL.md`
 - `docs/maps/workstream_dependencies.json`
@@ -83,7 +85,28 @@ Read or inspect:
 - `docs/guides/*`
 - `workstreams/*/BRIEF.md`
 - `workstreams/*/START_PROMPT.md`
+- `workstreams/_template/` when adding or revising workstream scaffolds
 
+
+## Tooling Boundaries
+
+### Workspace Identity And Reset Tooling
+
+`template.config.json` and `scripts/initialize_from_template.py` belong to
+Project Architect-managed workspace identity/reset operations.
+
+Use them for project-name replacement, runtime folder cleanup, and compact
+memory reset when the user explicitly wants to re-seed the workspace. They are
+not normal Orchestrator tools and they do not add workstreams.
+
+### Workstream Scaffolding Tooling
+
+`workstreams/_template/`, `docs/maps/workstream_dependencies.json`,
+`scripts/generate_workstream_dependency_docs.py`, and
+`scripts/generate_workstream_prompts.py` belong to workstream structure changes.
+
+Use them when a game needs a different workstream set. Regenerate derived maps
+and `START_PROMPT.md` files after dependency changes.
 ## Required Behavior Before Edits
 
 Before modifying files, the Project Architect must:

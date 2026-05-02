@@ -1,4 +1,7 @@
 {
+  "_owner": "project_architect",
+  "_purpose": "Workspace identity/reset configuration for project-name replacement, runtime cleanup, and compact memory reset.",
+  "_usage_context": "Not part of the normal user flow after a fresh clone. Use only when the Project Architect needs to re-seed or rename the workspace.",
   "template_name": "Project_game AI Orchestration Workspace",
   "template_version": "0.2.0",
   "replaceable_project_name": "Project_game",

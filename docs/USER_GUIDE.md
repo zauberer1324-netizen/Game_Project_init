@@ -1078,3 +1078,129 @@ ORCHESTRATOR_MEMORY.md 최종 반영은 오케스트레이터가 한다.
 ```
 
 예외적으로 사용자가 명시 승인한 경우에만 Project Architect가 구조적 사실에 한해 `ORCHESTRATOR_MEMORY.md`를 직접 수정할 수 있다. 게임 방향, 워크스트림 산출물 승인, 프로토타입 포함 여부, `game_project/` 반영 판단은 수정하면 안 된다.
+---
+
+## 17. 최신 구조 업데이트
+
+이 절은 최근 추가된 구조를 한곳에 모아 설명한다. 기존 사용 흐름은 그대로 유지하되, 새 게임을 시작하거나 구조를 바꿀 때 아래 항목을 함께 확인하면 된다.
+
+### 17-1. `orchestrator-init`와 엔진 선택
+
+새 게임을 시작할 때는 먼저 오케스트레이터 채팅에서 `orchestrator-init`을 진행한다. 이때 오케스트레이터는 게임의 방향성뿐 아니라 엔진 상태도 반드시 정리해야 한다.
+
+엔진 상태는 둘 중 하나여야 한다.
+
+```text
+1. Selected: 사용할 엔진과 engine_profiles/<engine>.md가 정해짐
+2. Deferred: 아직 정하지 않기로 했고, 보류 사유와 다시 결정할 조건이 기록됨
+```
+
+이 정보는 `docs/orchestrator/ORCHESTRATOR_MEMORY.md`의 `Selected Engine` 섹션에 기록된다. 엔진이 선택되면 이후 `scripts/scaffold_engine_profile.py`를 사용해 선택한 엔진 프로파일의 테스트 게이트를 `game_project/`에 붙일 수 있다. 단, 이 단계는 오케스트레이터가 사용자에게 변경 파일을 보여주고 확인을 받은 뒤 진행해야 한다.
+
+초기화가 정말 끝났는지 확인하고 싶다면 다음 선택 검사를 사용할 수 있다.
+
+```powershell
+python .\scripts\check_init_completion.py
+```
+
+이 검사는 기본 quality gate에는 포함되지 않는다. 빈 작업대 상태에서는 아직 north star, selected engine, 첫 PRD가 없으므로 실패하는 것이 정상이다. 상태만 보고 싶으면 다음처럼 실행한다.
+
+```powershell
+python .\scripts\check_init_completion.py --warn-only
+```
+
+### 17-2. 사운드 워크스트림
+
+사운드는 두 개의 워크스트림으로 분리되어 있다.
+
+```text
+workstreams/bgm/
+workstreams/game_sound/
+```
+
+`bgm`은 배경음악 방향, 큐시트, 모티프, 루프, 전환, 스팅어, BGM 참고자료와 에셋 브리프를 제안한다.
+
+`game_sound`는 플레이어 행동 SFX, UI 사운드, 환경음, 이벤트 이름 제안, 우선순위, 반복 피로도, 접근성 검토를 제안한다.
+
+중앙 규칙은 다음 파일에 있다.
+
+```text
+docs/contracts/audio_contract.md
+```
+
+두 사운드 워크스트림은 중앙 문서나 `game_project/`를 직접 수정하지 않는다. 각자 `OUTPUT.md`, `HANDOFF.md`, `proposed_context_updates.md`, `proposed_adr.md`에 제안하고, 오케스트레이터가 검토 후 승인된 내용만 중앙 문서나 구현으로 승격한다.
+
+### 17-3. Project Architect 도구 구분
+
+Project Architect는 게임 방향을 정하는 역할이 아니라 작업공간 구조를 관리하는 역할이다. 최근 구조에서는 Project Architect 도구를 두 종류로 나눈다.
+
+첫째, 작업공간 정체성/초기화 도구:
+
+```text
+template.config.json
+scripts/initialize_from_template.py
+```
+
+이 도구들은 프로젝트명 치환, 런타임 폴더 정리, 오케스트레이터 메모리 리셋처럼 작업공간의 정체성을 다시 맞출 때 사용한다. 일반 오케스트레이터가 평소에 쓰는 도구가 아니며, 새 워크스트림을 추가하는 도구도 아니다.
+
+둘째, 워크스트림 스캐폴딩 도구:
+
+```text
+workstreams/_template/
+docs/maps/workstream_dependencies.json
+scripts/generate_workstream_dependency_docs.py
+scripts/generate_workstream_prompts.py
+```
+
+새 워크스트림을 추가할 때는 Project Architect 채팅에서 설계를 먼저 확정하고, `_template`을 복사하거나 변형한 뒤 `workstream_dependencies.json`을 갱신한다. 그 다음 아래 명령으로 파생 문서와 시작 프롬프트를 재생성한다.
+
+```powershell
+python .\scripts\generate_workstream_dependency_docs.py --write
+python .\scripts\generate_workstream_prompts.py --write
+```
+
+### 17-4. 스크립트 안내
+
+스크립트별 역할은 다음 문서에 정리되어 있다.
+
+```text
+scripts/README.md
+```
+
+새로 들어온 AI나 사용자가 어떤 스크립트를 언제 쓰는지 헷갈리면 이 파일을 먼저 확인하면 된다.
+
+### 17-5. `data/`와 `runs/`
+
+`data/`는 외부 근거가 필요한 게임 작업에 사용한다. 예를 들어 실제 어종, 작물, 도구, 역사적 참고자료, 공장 공정 등을 게임에 반영해야 할 때 원문과 추출/검증 결과를 보관한다.
+
+```text
+data/raw/
+data/extracted/
+data/verified/
+data/rejected/
+```
+
+`runs/`는 실행 로그, 생성된 프롬프트, 병합 미리보기, 검토 산출물을 저장할 수 있는 공간이다. 처음 clone한 상태에서는 비어 있는 것이 정상이다.
+
+### 17-6. 최신 추천 시작 프롬프트
+
+새 게임을 시작할 때 오케스트레이터 채팅에는 다음처럼 말하면 좋다.
+
+```text
+AGENTS.md와 docs/USER_GUIDE.md를 기준으로 작업해줘.
+orchestrator_project를 운영 프레임워크로 사용하고, orchestrator-init으로 새 게임 초기화를 진행해줘.
+질문은 한 번에 하나씩 해줘.
+각 질문마다 왜 중요한지와 네 추천안을 함께 제시해줘.
+엔진은 선택하거나, 아직 정하지 않을 경우 보류 사유와 다시 결정할 조건을 ORCHESTRATOR_MEMORY.md의 Selected Engine에 기록하도록 설계해줘.
+파일을 수정하기 전에는 변경 예정 파일과 변경 내용을 먼저 보여주고 내 확인을 받아줘.
+```
+
+구조 변경이 필요할 때 Project Architect 채팅에는 다음처럼 말하면 좋다.
+
+```text
+너는 Project Architect야.
+게임 방향이나 구현을 정하지 말고, 작업공간 구조만 검토해줘.
+먼저 전체 폴더와 구조 핵심 파일을 확인하고, 파일 수정 없이 문제점과 설계도를 작성해줘.
+모호한 부분은 추천안을 포함해서 질문해줘.
+내가 승인하기 전에는 실제 파일을 수정하지 마.
+```

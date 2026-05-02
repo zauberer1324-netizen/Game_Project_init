@@ -24,6 +24,7 @@ Game seed:
 - Daily activities I want:
 - Proficiency/growth feeling:
 - Engine preference, if any:
+- Engine deferral reason, if you want to decide later:
 
 Ask one question at a time.
 Give your recommended answer for each question.
